@@ -17,10 +17,19 @@ C++ RPN Calculator - 学校作业
 
 ## 编译运行
 
-### 使用 Visual C++ 编译
+### 使用 Visual C++ 编译（windows）或g++（linux）
 ```bash
+（windows）
+#生成.exe文件
 cl /EHsc rpn_calc.cpp
+#执行exe文件
 rpn_calc.exe
+
+（linu）
+#编译并生成二进制可执行文件
+g++ rpn_calc.cpp -o rpn_calc
+#执行文件
+./rpn_calc
 
 示例
 输入: 5 2 +
