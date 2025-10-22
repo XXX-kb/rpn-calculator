@@ -25,7 +25,7 @@ cl /EHsc rpn_calc.cpp
 #执行exe文件
 rpn_calc.exe
 
-（linu）
+（linux）
 #编译并生成二进制可执行文件
 g++ rpn_calc.cpp -o rpn_calc
 #执行文件
