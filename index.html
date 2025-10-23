@@ -1,101 +1,194 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en-us">
 <head>
-    <meta charset="UTF-8">
-    <title>RPN 计算器使用手册</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            line-height: 1.6;
-        }
-        .code-block {
-            background: #f8f9fa;
-            padding: 20px;
-            margin: 15px 0;
-            border-radius: 8px;
-            border-left: 4px solid #007acc;
-        }
-        pre {
-            background: #2d2d2d;
-            color: #fff;
-            padding: 15px;
-            border-radius: 5px;
-            overflow-x: auto;
-            white-space: pre-wrap;
-            font-family: 'Courier New', monospace;
-        }
-        h1, h2, h3 {
-            color: #333;
-        }
-        .platform-section {
-            margin: 25px 0;
-        }
-    </style>
+  <title>rpn_manual.nim</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>🐳</text></svg>">
+  <meta content="text/html; charset=utf-8" http-equiv="content-type">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta content="nimib 0.3.12" name="generator">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.min.css">
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/pietroppeter/nimib/assets/atom-one-light.css'>
+    <script src="https://cdn.jsdelivr.net/gh/pietroppeter/nimib@main/assets/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+  <style>
+.nb-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nb-small {
+  font-size: 0.8rem;
+}
+button.nb-small {
+  float: right;
+  padding: 2px;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+section#source {
+  display:none
+}
+pre > code {
+  font-size: 1.2em;
+}
+.nb-output {
+  line-height: 1.15;
+}
+figure {
+  margin: 2rem 0;
+}
+figcaption {
+  text-align: center;
+}
+  
+</style>
+  
 </head>
 <body>
-    <h1>RPN 计算器使用手册</h1>
-    
-    <h2>安装和编译指南</h2>
-    
-    <div class="platform-section">
-        <h3>🌐 GitHub Codespace（推荐）</h3>
-        <div class="code-block">
-            <p>1. 在项目页面点击 <strong>Code → Codespaces → Create codespace</strong></p>
-            <p>2. 在终端中执行：</p>
-            <pre># 编译
+<header>
+<div class="nb-box">
+  <span><a href=".">🏡</a></span>
+  <span><code>rpn_manual.nim</code></span>
+  <span></span>
+</div>
+<hr>
+</header><main>
+<h1>RPN 计算器使用手册</h1>
+<h2>安装和编译指南</h2>
+<h3>🌐 GitHub Codespace (推荐)</h3>
+<ol>
+<li>在项目页面点击 Code → Codespaces → Create codespace</li>
+<li>在终端中执行:</li>
+</ol>
+<pre><code class="language-bash"># 编译
 g++ rpn_calc.cpp -o rpn_calc
-
 # 运行
-./rpn_calc</pre>
-        </div>
-    </div>
-    
-    <div class="platform-section">
-        <h3>🪟 Windows 系统</h3>
-        <div class="code-block">
-            <p>使用 Visual C++ 编译器：</p>
-            <pre># 编译
+./rpn_calc
+</code></pre>
+<h3>🪟 Windows 系统</h3>
+<p>使用 Visual C++ 编译器:</p>
+<pre><code class="language-bash"># 编译&quot;
 cl /EHsc rpn_calc.cpp
-
 # 运行
-rpn_calc.exe</pre>
-            <p><em>需要安装 Visual Studio 并包含 C++ 开发工具</em></p>
-        </div>
-    </div>
-    
-    <div class="platform-section">
-        <h3>🐧 Linux 系统</h3>
-        <div class="code-block">
-            <pre># 编译
-g++ rpn_calc.cpp -o rpn_calc
-
-# 运行
-./rpn_calc</pre>
-        </div>
-    </div>
-    
-    <h2>基本使用示例</h2>
-    <div class="code-block">
-        <pre>输入：5 2 +
-结果：7
-
-输入：3 4 * 2 /
-结果：6
-
-输入：5 5 + ;10 2 /
+rpn_calc.exe
+</code></pre>
+<p>需要安装 Visual Studio 并包含 C++ 开发工具</p>
+<h3>🐧 Linux 系统</h3>
+<pre><code class="language-bash">   # 编译
+   g++ rpn_calc.cpp -o rpn_calc
+   # 运行
+   ./rpn_calc
+</code></pre>
+<h2>基本使用示例</h2>
+<p>输入：5 2 +</p>
+<p>结果：7</p>
+<p>输入：3 4 * 2 /</p>
+<p>结果：6</p>
+<p>输入：5 5 + ;10 2 /
 输出：
-批量计算 2 个表达式：
- 1. 5 5 + = 10.000000
- 2. 10 2 / = 5.000000</pre>
-    </div>
-    
-    <h2>支持的操作</h2>
-    <ul>
-        <li><strong>加法:</strong> +</li>
-        <li><strong>减法:</strong> -</li>
-        <li><strong>乘法:</strong> *</li>
-        <li><strong>除法:</strong> /</li>
-    </ul>
-</body>
+批量计算 2 个表达式：</p>
+<pre><code>1. 5 5 + = 10.000000
+
+2. 10 2 / = 5.000000
+</code></pre>
+<h2>支持的操作</h2>
+<ul>
+<li><strong>加法</strong>: <code>+</code></li>
+<li><strong>减法</strong>: <code>-</code></li>
+<li><strong>乘法</strong>: <code>*</code></li>
+<li><strong>除法</strong>: <code>/</code></li>
+</ul>
+</main>
+<footer>
+<div class="nb-box">
+  <span><span class="nb-small">made with <a href="https://pietroppeter.github.io/nimib/">nimib 🐳</a></span></span>
+  <span></span>
+  <span><button class="nb-small" id="show" onclick="toggleSourceDisplay()">Show Source</button></span>
+</div>
+</footer>
+<section id="source">
+<pre><code class="nohighlight nim hljs"><span class="hljs-keyword">import</span> nimib
+
+nbInit
+
+nbText: <span class="hljs-string">&quot;&quot;&quot;
+# RPN 计算器使用手册
+
+## 安装和编译指南
+
+
+### 🌐 GitHub Codespace (推荐)
+
+   1. 在项目页面点击 Code → Codespaces → Create codespace
+   2. 在终端中执行:
+   ```bash
+   # 编译
+   g++ rpn_calc.cpp -o rpn_calc
+   # 运行
+   ./rpn_calc
+   ```
+
+
+### 🪟 Windows 系统
+
+   使用 Visual C++ 编译器:
+   ```bash
+   # 编译&quot;
+   cl /EHsc rpn_calc.cpp
+   # 运行
+   rpn_calc.exe
+   ```
+   需要安装 Visual Studio 并包含 C++ 开发工具
+
+
+### 🐧 Linux 系统
+```bash
+   # 编译
+   g++ rpn_calc.cpp -o rpn_calc
+   # 运行
+   ./rpn_calc
+```
+
+## 基本使用示例
+
+
+   输入：5 2 +
+
+   结果：7
+   
+   输入：3 4 * 2 /
+
+   结果：6
+   
+   输入：5 5 + ;10 2 /
+   输出：
+   批量计算 2 个表达式：
+
+    1. 5 5 + = 10.000000
+
+    2. 10 2 / = 5.000000
+
+## 支持的操作
+- **加法**: `+`
+- **减法**: `-`
+- **乘法**: `*`
+- **除法**: `/`
+&quot;&quot;&quot;</span>
+
+nbSave
+</code></pre>
+</section><script>
+function toggleSourceDisplay() {
+  var btn = document.getElementById("show")
+  var source = document.getElementById("source");
+  if (btn.innerHTML=="Show Source") {
+    btn.innerHTML = "Hide Source";
+    source.style.display = "block";
+  } else {
+    btn.innerHTML = "Show Source";
+    source.style.display = "none";
+  }
+}
+</script></body>
 </html>
